@@ -1,6 +1,5 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { ClientProxy } from '@nestjs/microservices';
-import { PrismaService } from './modules/prisma/prisma.service';
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from './prisma/prisma.service';
 
 @Injectable()
 export class AppService {
@@ -16,6 +15,7 @@ export class AppService {
     });
     return response;
   }
+
   async getItemById(id) {
     const response = await this.prisma.item.findUnique({
       where: {

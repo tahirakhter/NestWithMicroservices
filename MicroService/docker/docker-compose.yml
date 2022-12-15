@@ -1,10 +1,16 @@
 version: '3.4'
 
 services:
-  demo-rabbit:
-        build:
-            context: ./rabbitmq
-            dockerfile: ./Dockerfile.rabbitmq
+    rabbit:
+        image: rabbitmq:3-management
         ports:
             - 5672:5672
             - 15672:15672
+    dev-db:
+        image: postgres:13
+        environment:
+            POSTGRES_USER: dbuser
+            POSTGRES_PASSWORD: fx7E8xC3Rv
+            POSTGRES_DB: 'nestApp'
+        ports:
+            - '5432:5432'
