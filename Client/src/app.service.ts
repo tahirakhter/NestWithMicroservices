@@ -19,16 +19,17 @@ export class AppService {
 
   createItemEvent(createItemDto) {
     try {
-      this.client.emit('user_created', createItemDto);
-      return;
+      this.client.emit('item_created', createItemDto);
+      return { data: 'item created successfully' };
     } catch (e) {
       throw new Error(e);
     }
   }
+
   getItemByIdEvent(id: number) {
     try {
-      this.client.emit<number>('get-by-id', id);
-      return;
+      this.client.emit<number>('get-item-by-id', id);
+      return { data: 'item fetched successfully' };
     } catch (e) {
       throw new Error(e);
     }
